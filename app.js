@@ -4,7 +4,8 @@
 //colores en la consola
 import colors from 'colors';
 //importar inquirerMenu
-import { inquirerMenu } from "./helpers/inquirer.js";
+//importar funcion pausa
+import { inquirerMenu, pausa } from "./helpers/inquirer.js";
 
 //limpiar la consola
 console.clear();
@@ -22,12 +23,12 @@ const main = async() => {
         //lo que le estamos diciendo es que mostrarMenu() debe esperar hastaque tenga una resolucion
         opt = await inquirerMenu();
         console.log( {opt} );
+
+        //pausa
+        await pausa();
         
 
     } while ( opt !== '0');//mientras opt sea diferente de 0 el menu se repetira indefinidamente
-
-
-    // pausa();
 
 }
 

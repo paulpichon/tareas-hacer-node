@@ -9,11 +9,36 @@ const preguntas = [
     {
       type: 'list',
       name: 'opcion',
-      message: '¿Qué desa hacer?',
+      message: '¿Qué desea hacer?',
       choices: [
-        '1. Crear lista',
-        'opt2',
-        'opt3'
+        {
+            value: '1',
+            name: '1. Crear tarea'
+        },
+        {
+            value: '2',
+            name: '2. Listar tareas'
+        },
+        {
+            value: '3',
+            name: '3. Listar tareas completadas'
+        },
+        {
+            value: '4',
+            name: '4. Listar tareas pendientes'
+        },
+        {
+            value: '5',
+            name: '5. Completar tareas(s)'
+        },
+        {
+            value: '6',
+            name: '6. Borrar tarea'
+        },
+        {
+            value: '0',
+            name: '0. Salir'
+        }
       ],
     },
   ];
@@ -22,7 +47,7 @@ const preguntas = [
 //opciones del menu creadas con inquirer
 const inquirerMenu = async() => {
     //limpiar lo anterior
-    // console.clear();
+    console.clear();
 
     //construir interfaz del menu
     console.log('================================'.green);
@@ -30,14 +55,32 @@ const inquirerMenu = async() => {
     console.log('================================\n'.green);
 
     //await al prompt que se usara para hacer preguntas al usuario
-    const opt = await inquirer.prompt( preguntas );
+    //destructuring a opt = opcion que es el name de la const preguntas
+    const { opcion } = await inquirer.prompt( preguntas );
 
     //devolvemos opt
-    return opt;
+    return opcion;
+
+}
+
+//funcion pausa
+const pausa = async() => {
+    const question = [
+        {
+          type: 'input',
+          name: 'enter',
+          message: `Presione ${'ENTER'.green} para continuar`,
+        },
+    ];
+    
+    //para dar espacio en la consola y no se vea amontonado
+    console.log('\n');
+    await inquirer.prompt( question );
 
 }
 
 //exportar inquirerMenu
 export {
-    inquirerMenu
+    inquirerMenu,
+    pausa
 }
