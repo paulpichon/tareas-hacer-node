@@ -1,8 +1,11 @@
 //importar la funcion mostrarMenu del archivo mensajes.js
-const { mostrarMenu, pausa } = require('./helpers/mensajes');
+// const { mostrarMenu, pausa } = require('./helpers/mensajes'); --> esto fue solo una demostracion
 
 //colores en la consola
-require('colors');
+import colors from 'colors';
+//importar inquirerMenu
+import { inquirerMenu } from "./helpers/inquirer.js";
+
 //limpiar la consola
 console.clear();
 
@@ -17,10 +20,8 @@ const main = async() => {
         //al tener promesas en mensajes.js
         //podemos hacer uso de await
         //lo que le estamos diciendo es que mostrarMenu() debe esperar hastaque tenga una resolucion
-        opt = await mostrarMenu();
+        opt = await inquirerMenu();
         console.log( {opt} );
-        //salir del menu de la aplicacion
-        if( opt !== '0') await pausa();
         
 
     } while ( opt !== '0');//mientras opt sea diferente de 0 el menu se repetira indefinidamente
