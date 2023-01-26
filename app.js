@@ -6,9 +6,8 @@ import colors from 'colors';
 //importar inquirerMenu
 //importar funcion pausa
 import { inquirerMenu, pausa } from "./helpers/inquirer.js";
-
-//limpiar la consola
-console.clear();
+//se importa clase Tareasssss
+import { Tareas } from './models/tareas.js';
 
 //funcion asincrona
 const main = async() => {
