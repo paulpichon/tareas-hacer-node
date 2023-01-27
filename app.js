@@ -5,7 +5,10 @@
 import colors from 'colors';
 //importar inquirerMenu
 //importar funcion pausa
-import { inquirerMenu, pausa } from "./helpers/inquirer.js";
+import {    inquirerMenu, 
+            pausa,
+            leerInput
+        } from "./helpers/inquirer.js";
 //se importa clase Tareasssss
 import { Tareas } from './models/tareas.js';
 
@@ -14,6 +17,9 @@ const main = async() => {
 
     //definimos opt como un string vacio
     let opt = '';
+    //creamos una nueva instancia de Tareas()
+    //debe estar fuera del cilco do while para que no se reinicie
+    const tareas = new Tareas();
 
     do {
         
@@ -21,7 +27,22 @@ const main = async() => {
         //podemos hacer uso de await
         //lo que le estamos diciendo es que mostrarMenu() debe esperar hastaque tenga una resolucion
         opt = await inquirerMenu();
-        console.log( {opt} );
+        
+
+        //
+        switch (opt) {
+            case '1':
+                //crear opcion
+                const desc = await leerInput('Descripcion:');
+                //para mostrar la tarea en el _listado
+                tareas.crearTarea( desc );
+            break;
+            
+            case '2':
+                console.log( tareas._listado );
+            break;
+        }
+
 
         //pausa
         await pausa();
