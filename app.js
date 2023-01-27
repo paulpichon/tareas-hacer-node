@@ -2,6 +2,7 @@
 // const { mostrarMenu, pausa } = require('./helpers/mensajes'); --> esto fue solo una demostracion
 
 //colores en la consola
+//aunque se vea que no se esta ocupando esta importacion en realidad si se usa
 import colors from 'colors';
 //importar inquirerMenu
 //importar funcion pausa
@@ -22,7 +23,7 @@ const main = async() => {
     const tareas = new Tareas();
 
     do {
-        
+        //imprimir el menu
         //al tener promesas en mensajes.js
         //podemos hacer uso de await
         //lo que le estamos diciendo es que mostrarMenu() debe esperar hastaque tenga una resolucion
@@ -39,7 +40,7 @@ const main = async() => {
             break;
             
             case '2':
-                console.log( tareas._listado );
+                console.log( tareas.listadoArr );
             break;
         }
 

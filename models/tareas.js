@@ -12,6 +12,27 @@ class Tareas {
     //para menejar diversas tareas usaremos un objeto
     _listado = {}
 
+    //getter
+    //basicamente es como si tuviera una propiedad en la clase aunque en realidad no lo es
+    get listadoArr() {
+        //creamos un arreglo donde se iran insertando las tareas
+        const listado = [];
+
+        //extraer cada una de las llaves del objeto
+        //al ser un arreglo lo podemos recorrer con foreach
+        Object.keys( this._listado ).forEach( key => {
+            //obtener la tarea
+            const tarea = this._listado[key];
+
+            //insertar el listado
+            //al ser un arreglo usamos .push() para insertar la tarea
+            listado.push( tarea );
+        })
+
+        return listado;
+
+    }
+
     //constructor
     constructor() {
         //inicializar _listado
