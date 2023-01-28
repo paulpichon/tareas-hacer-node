@@ -4,6 +4,8 @@
 //colores en la consola
 //aunque se vea que no se esta ocupando esta importacion en realidad si se usa
 import colors from 'colors';
+//importar funcion para guardar informacion en el archivo
+import { guardarDB } from './helpers/guardarArchivo.js';
 //importar inquirerMenu
 //importar funcion pausa
 import {    inquirerMenu, 
@@ -43,6 +45,10 @@ const main = async() => {
                 console.log( tareas.listadoArr );
             break;
         }
+
+        //funcion opara guardar informacion en el archivo dentro de la carpeta DB
+        //y como argumento pasamos el arreglo  tareas.listadoArr
+        // guardarDB( tareas.listadoArr );
 
 
         //pausa
