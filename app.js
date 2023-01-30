@@ -61,6 +61,14 @@ const main = async() => {
                 // console.log( tareas.listadoArr );
                 tareas.listadoCompleto();
             break;
+            case '3':
+                //listar tareas completadas
+                tareas.listarPendientesCompletadas( true );
+            break;
+            case '4':
+                //listar tareas pendientes
+                tareas.listarPendientesCompletadas( false );
+            break;
         }
 
         //funcion opara guardar informacion en el archivo dentro de la carpeta DB

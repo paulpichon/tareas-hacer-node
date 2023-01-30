@@ -82,21 +82,41 @@ class Tareas {
             console.log(`${idx} ${desc} :: ${ estado }`);
         });
         
-        // console.log( this.listadoArr );
+    }
 
+    //metodo para listar las tareas completadas
+    listarPendientesCompletadas( completadas = true ) {
+        //log para dar un salto de linea en consola
+        console.log();
 
-        //si completada !== null = Completado de lo contrario Pendiente
+        //contador para el indice de las tareas
+        let contador = 0;
 
-        //1: verde
-        // Completada: verde
-        // Pendiente : rojo
+        this.listadoArr.forEach( (tarea, index) => {
 
+            const { desc, completadoEn } = tarea;
+            //estado de las tares
+            const estado = (completadoEn) ? 'Completado'.green : 'Pendiente'.red;
 
-        // 1. Alma :: Completada | Pendiente
-        // 2. Realidad :: Completada | Pendiente
-        // 3. Vida :: Completada | Pendiente
-        // 4. Corazon :: Completada | Pendiente
-
+            //si completadas es true  
+            if (completadas) {
+                //si completadas estan realizadas
+                if (completadoEn) {
+                    //incrementar el contador
+                    contador += 1;
+                    console.log(`${ (contador+'.').green } ${desc} :: ${ completadoEn }`);
+                    
+                }
+            }else{
+                if (!completadoEn) {
+                    //incrementar el contador
+                    contador += 1;
+                    console.log(`${ (contador+'.').green} ${desc} :: ${ estado }`);
+                }
+            }
+            
+        });
+        
     }
 
 }
