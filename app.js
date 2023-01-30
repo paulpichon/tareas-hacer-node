@@ -5,7 +5,7 @@
 //aunque se vea que no se esta ocupando esta importacion en realidad si se usa
 import colors from 'colors';
 //importar funcion para guardar informacion en el archivo
-import { guardarDB } from './helpers/guardarArchivo.js';
+import { guardarDB, leerDB } from './helpers/guardarArchivo.js';
 //importar inquirerMenu
 //importar funcion pausa
 import {    inquirerMenu, 
@@ -21,8 +21,21 @@ const main = async() => {
     //definimos opt como un string vacio
     let opt = '';
     //creamos una nueva instancia de Tareas()
-    //debe estar fuera del cilco do while para que no se reinicie
+    //debe estar fuera del ciclo do while para que no se reinicie
     const tareas = new Tareas();
+
+
+
+    //leer las tareas de DB
+    const tareasDB = leerDB();
+    //verificar si tareaDB existe establecemos las tareas
+    if ( tareasDB) {
+        //establecer las tareas
+    }
+
+    //pausamos la aplicacion para poder ver las tareasDB
+    await pausa();
+
 
     do {
         //imprimir el menu
