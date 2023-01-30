@@ -57,7 +57,9 @@ const main = async() => {
             break;
             
             case '2':
-                console.log( tareas.listadoArr );
+                //listar tareas
+                // console.log( tareas.listadoArr );
+                tareas.listadoCompleto();
             break;
         }
 

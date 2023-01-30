@@ -1,3 +1,7 @@
+//colores en la consola
+import colors from 'colors';
+//importat inquirer
+import inquirer from 'inquirer';
 //Clase Tareas para manejar diversas tareas
 //importamos la clase Tarea
 import { Tarea } from "./tarea.js";
@@ -59,6 +63,39 @@ class Tareas {
 
         //insertar la tarea a el objeto _listado
         this._listado[tarea.id] = tarea;
+
+    }
+
+    //listado completo
+    listadoCompleto() {
+        //se puede usar tanto _listado como listadoArr
+        // console.log( this.listadoArr );
+        console.log();
+
+        this.listadoArr.forEach( (tarea, index) => {
+            const { desc, completadoEn } = tarea;
+            //indice de las tareas
+            const idx = `${index + 1}`.green;
+            //estado de las tares
+            const estado = (completadoEn) ? 'Completado'.green : 'Pendiente'.red;
+
+            console.log(`${idx} ${desc} :: ${ estado }`);
+        });
+        
+        // console.log( this.listadoArr );
+
+
+        //si completada !== null = Completado de lo contrario Pendiente
+
+        //1: verde
+        // Completada: verde
+        // Pendiente : rojo
+
+
+        // 1. Alma :: Completada | Pendiente
+        // 2. Realidad :: Completada | Pendiente
+        // 3. Vida :: Completada | Pendiente
+        // 4. Corazon :: Completada | Pendiente
 
     }
 
