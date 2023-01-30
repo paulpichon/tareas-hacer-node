@@ -40,6 +40,15 @@ class Tareas {
         this._listado = {};
     }
 
+    //funcion para cargar Tareas del array
+    cargarTareasFromArray( tareas = []) {
+        
+        tareas.forEach( tarea => {
+            this._listado[tarea.id] = tarea;
+        });
+
+    }
+
 
     //metodo crear tarea
     //se espera como argumento la descripcion de la tarea que se quiere registrar
@@ -57,4 +66,6 @@ class Tareas {
 
 
 //exportar Tareas
-export { Tareas };
+export { 
+        Tareas
+    };

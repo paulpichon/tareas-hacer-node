@@ -5,7 +5,10 @@
 //aunque se vea que no se esta ocupando esta importacion en realidad si se usa
 import colors from 'colors';
 //importar funcion para guardar informacion en el archivo
-import { guardarDB, leerDB } from './helpers/guardarArchivo.js';
+import {    guardarDB, 
+            leerDB
+        } from './helpers/guardarArchivo.js';
+
 //importar inquirerMenu
 //importar funcion pausa
 import {    inquirerMenu, 
@@ -31,11 +34,10 @@ const main = async() => {
     //verificar si tareaDB existe establecemos las tareas
     if ( tareasDB) {
         //establecer las tareas
+
+        //cargar tareas
+        tareas.cargarTareasFromArray(tareasDB);
     }
-
-    //pausamos la aplicacion para poder ver las tareasDB
-    await pausa();
-
 
     do {
         //imprimir el menu
@@ -61,7 +63,7 @@ const main = async() => {
 
         //funcion opara guardar informacion en el archivo dentro de la carpeta DB
         //y como argumento pasamos el arreglo  tareas.listadoArr
-        // guardarDB( tareas.listadoArr );
+        guardarDB( tareas.listadoArr );
 
 
         //pausa

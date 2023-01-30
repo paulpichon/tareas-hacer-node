@@ -26,7 +26,7 @@ const leerDB = () => {
     //convertir la info con json.parse
     const data = JSON.parse( info );
 
-    console.log( data );
+    // console.log( data );
 
     return data;
 
