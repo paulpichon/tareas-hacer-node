@@ -158,6 +158,38 @@ const confirmar = async(message) => {
 
 }
 
+//funcion para hacer seleccion multiple
+const mostrarListadoCheckList = async( tareas = [] ) => {
+
+    const choices = tareas.map( (tarea, i) => {
+        
+        const idx = `${i+1}.`.green;
+
+        return {
+            value: tarea.id,
+            name: `${ idx } ${ tarea.desc }`,
+            //CON UNA OPERACION TERNARIA VERIFICAMOS SI EL SELECT YA ESTA COMPLETADO O AUN NO
+            checked: ( tarea.completadoEn ) ? true : false
+        }
+    });
+
+    //crear el prompt
+    const pregunta = [
+        {
+            type: 'checkbox',
+            name: 'ids',
+            message: 'Selecciones',
+            choices // choices: choices
+        }
+    ];
+
+    //imprimir con inquirer el prompt con las pregunta
+    const { ids } = await inquirer.prompt( pregunta );
+
+    return ids;
+
+}
+
 
 //exportar inquirerMenu
 export {
@@ -165,5 +197,6 @@ export {
     pausa,
     leerInput,
     listadoTareasBorrar,
-    confirmar
+    confirmar,
+    mostrarListadoCheckList
 }

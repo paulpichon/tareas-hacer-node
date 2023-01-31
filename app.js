@@ -15,7 +15,8 @@ import {    inquirerMenu,
             pausa,
             leerInput,
             listadoTareasBorrar,
-            confirmar
+            confirmar,
+            mostrarListadoCheckList
         } from "./helpers/inquirer.js";
 //se importa clase Tareasssss
 import { Tareas } from './models/tareas.js';
@@ -63,14 +64,23 @@ const main = async() => {
                 // console.log( tareas.listadoArr );
                 tareas.listadoCompleto();
             break;
+
             case '3':
                 //listar tareas completadas
                 tareas.listarPendientesCompletadas( true );
             break;
+
             case '4':
                 //listar tareas pendientes
                 tareas.listarPendientesCompletadas( false );
             break;
+
+            case '5':
+                //completado | pendiente
+                const ids = await mostrarListadoCheckList( tareas.listadoArr );
+                console.log( ids );
+            break;
+
             case '6':
                 //borrar tareas
                 //se pone await para que no nos muetsre algun error en la consola
