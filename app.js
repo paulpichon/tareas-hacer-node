@@ -14,7 +14,8 @@ import {    guardarDB,
 import {    inquirerMenu, 
             pausa,
             leerInput,
-            listadoTareasBorrar
+            listadoTareasBorrar,
+            confirmar
         } from "./helpers/inquirer.js";
 //se importa clase Tareasssss
 import { Tareas } from './models/tareas.js';
@@ -74,7 +75,19 @@ const main = async() => {
                 //borrar tareas
                 //se pone await para que no nos muetsre algun error en la consola
                 const id = await listadoTareasBorrar( tareas.listadoArr );
-                console.log({id});
+                //verificar si la opcion seleccionada es diferente de 0
+                if (id !== '0') {
+                    //llamar funcion para borrar
+                    //preguntar si esta seguro
+                    const ok = await confirmar('¿Está seguro?');
+                    //verificar si ok es true
+                    if ( ok ) {
+                        //funcion para borrar la tarea
+                        tareas.borrarTarea( id );
+                        //mensaje despues de eliminar la tarea
+                        console.log('Tarea eliminada');
+                    }   
+                }
             break;
         }
 
