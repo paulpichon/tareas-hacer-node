@@ -44,6 +44,17 @@ class Tareas {
         this._listado = {};
     }
 
+    //metodo para borrar una tarea del listado
+    borrarTarea( id = '') {
+        //verificar si existe la tarea mediante el ID
+        if ( this._listado[id] ) {
+            //eliminar tarea del listado
+            delete this._listado[id];
+                
+        }
+    }
+
+
     //funcion para cargar Tareas del array
     cargarTareasFromArray( tareas = []) {
         

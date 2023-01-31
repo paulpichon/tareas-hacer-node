@@ -13,7 +13,8 @@ import {    guardarDB,
 //importar funcion pausa
 import {    inquirerMenu, 
             pausa,
-            leerInput
+            leerInput,
+            listadoTareasBorrar
         } from "./helpers/inquirer.js";
 //se importa clase Tareasssss
 import { Tareas } from './models/tareas.js';
@@ -68,6 +69,12 @@ const main = async() => {
             case '4':
                 //listar tareas pendientes
                 tareas.listarPendientesCompletadas( false );
+            break;
+            case '6':
+                //borrar tareas
+                //se pone await para que no nos muetsre algun error en la consola
+                const id = await listadoTareasBorrar( tareas.listadoArr );
+                console.log({id});
             break;
         }
 

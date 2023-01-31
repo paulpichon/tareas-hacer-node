@@ -103,11 +103,39 @@ const leerInput = async( message ) => {
     return desc;
 
 }
+//funcion para borrar tareas
+const listadoTareasBorrar = async( tareas = [] ) => {
 
+    const choices = tareas.map( (tarea, i) => {
+        
+        const idx = `${i+1}.`.green;
+        return {
+            value: tarea.id,
+            name: `${ idx } ${ tarea.desc }`
+        }
+    });
+
+    //crear el prompt
+    const preguntas = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Borrar',
+            choices // choices: choices
+        }
+    ];
+
+    //imprimir con inquirer el prompt con las preguntas
+    const { id } = await inquirer.prompt( preguntas );
+
+    return id;
+
+}
 
 //exportar inquirerMenu
 export {
     inquirerMenu,
     pausa,
-    leerInput
+    leerInput,
+    listadoTareasBorrar
 }
