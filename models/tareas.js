@@ -50,7 +50,7 @@ class Tareas {
         if ( this._listado[id] ) {
             //eliminar tarea del listado
             delete this._listado[id];
-                
+
         }
     }
 
@@ -115,7 +115,7 @@ class Tareas {
                 if (completadoEn) {
                     //incrementar el contador
                     contador += 1;
-                    console.log(`${ (contador+'.').green } ${desc} :: ${ completadoEn }`);
+                    console.log(`${ (contador+'.').green } ${desc} :: ${ completadoEn.green }`);
                     
                 }
             }else{
@@ -128,6 +128,33 @@ class Tareas {
             
         });
         
+    }
+
+    //metodo para completar las tareas seleccionadas
+    toggleCompletadas( ids = [ ]) {
+
+        //iteramos con un foreach el arreglo de ids
+        ids.forEach( id  => {
+            
+            const tarea = this._listado[id];
+            //verificar si la tarea no esta previamente completa
+            if ( !tarea.completadoEn ) {
+                tarea.completadoEn = new Date().toISOString();
+            }
+
+        });
+
+        //tareas no completadas
+        this.listadoArr.forEach( tarea => {
+            //verificamos que si no  hay un id de la tarea tengo que limpiarlo con el codigo dentro del if
+            if ( !ids.includes(tarea.id) ) {
+                //definimos completadoEn como null
+                //eliminar las que no esten en el arreglo
+                this._listado[tarea.id].completadoEn = null;
+            }
+
+        } );
+
     }
 
 }
